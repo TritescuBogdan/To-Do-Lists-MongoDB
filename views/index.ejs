@@ -1,0 +1,45 @@
+<%- include("partials/header"); %>
+
+<body>
+    <section id="TodoList">
+        <div id="error">
+            <% if(locals.error) { %>
+                ⚠ <%= error %>
+                    <% } %>
+        </div>
+        <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+            <div class="list-group">
+                <% if (locals.newListItem) { %>
+                    <% for(let i=0;i<newListItem.length;i++) { %>
+                        <label class="list-group-item d-flex gap-3">
+                            <input class="form-check-input flex-shrink-0" type="checkbox" value="" name="<%= i %>"
+                                style="font-size: 1.375em" />
+                            <span class="pt-1 form-checked-content">
+                                <strong>
+                                    <%= newListItem[i].itemContent %>
+                                </strong>
+                            </span>
+                            <!-- DELETE BUTTON -->
+                            <form id="delete" action="/delete<%=listTitle%>" method="POST">
+                                <button class="btn btn-dark" name="delete"
+                                    value="<%=newListItem[i].itemContent%>">✕</button>
+                            </form>
+                        </label>
+                        <% } } %>
+                            <!-- ADD NEW ITEM INPUT -->
+                            <label class="list-group-item d-flex gap-3 bg-body-tertiary ">
+                                <span class="pt-1 form-checked-content ">
+                                    <form action="/<%=listTitle%>-submit" method="POST">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Add new task..."
+                                                name="newitem" required />
+                                        </div>
+                                        <button class="btn btn-dark" type="submit">Add task</button>
+                                    </form>
+                                </span>
+                            </label>
+            </div>
+        </div>
+    </section>
+
+<%- include("partials/footer"); %>

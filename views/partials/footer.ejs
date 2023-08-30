@@ -1,0 +1,61 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+<script>
+var urlCheck;
+if (window.location.pathname === "/" || window.location.pathname === "/home-submit") {
+  document.getElementById("home").classList.add("active");
+  urlCheck = "HomeList";
+  saveCheckboxState(urlCheck);
+} else {
+  document.getElementById("work").classList.add("active");
+  urlCheck = "WorkList";
+  saveCheckboxState(urlCheck);
+}
+
+function saveCheckboxState(urlCheck) {
+  var checkState;
+  // Bind to the onload event
+  window.addEventListener("load", function () {
+    checkState = JSON.parse(localStorage[urlCheck] || "{}");
+    for (var i in checkState) {
+      var input = document.querySelector('input[name="' + i + '"]');
+      if (input) input.checked = true;
+    }
+    // Get all checkboxes
+    var checkBox = document.getElementsByClassName("form-check-input");
+    for (var i = 0; i < checkBox.length; i++) {
+      // Bind click event handler
+      checkBox[i].addEventListener("click", function (evt) {
+        // If checkbox is checked then save to state
+        if (this.checked) {
+          checkState[this.name] = true;
+        }
+        // Else remove from state
+        else if (checkState[this.name]) {
+          delete checkState[this.name];
+        }
+        // Persist state in localStorage
+        if (
+          window.location.pathname === "/" ||
+          window.location.pathname === "/home-submit"
+        ) {
+          localStorage.HomeList = JSON.stringify(checkState);
+        } else {
+          localStorage.WorkList = JSON.stringify(checkState);
+        }
+      });
+    }
+  });
+}
+</script>
+
+</body>
+
+<footer>
+    <hr />
+    Copyrights © <%= new Date().getFullYear() %>
+</footer>
+
+</html>

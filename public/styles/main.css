@@ -1,0 +1,90 @@
+body {
+  background-color: rgb(27, 27, 27);
+}
+* {
+  color: rgb(237, 237, 237) !important;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+#error {
+  text-align: center;
+}
+
+.active {
+  background-color: rgb(89 52 0) !important;
+  box-shadow: 0px 0px 15px 2px #481600;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#delete {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.list-group-item:hover > #delete {
+  margin: 0;
+  opacity: 1;
+  transition: opacity 0.3s;
+  color: #c4c4c4 !important;
+}
+
+input,
+select,
+textarea,
+input::placeholder {
+  color: #eeeeee !important;
+  background-color: rgb(47, 47, 47) !important;
+}
+textarea:focus,
+input:focus {
+  background-color: rgb(53, 53, 53) !important;
+}
+
+.list-group {
+  width: 80vh;
+  box-shadow: -2px 5px 14px 5px #000000, 0px 0px 26px 11px #000000;
+}
+@media (max-width: 600px) {
+  .list-group {
+    width: 100%;
+  }
+}
+
+.list-group-item {
+  background-color: #381600;
+  padding-bottom: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-body-tertiary {
+  background-color: rgb(41 24 0) !important;
+}
+.text-body-secondary {
+  color: rgb(169, 169, 169) !important;
+}
+.form-checked-content {
+  width: 100%;
+}
+.form-control {
+  background-color: rgb(47, 47, 47);
+  padding: 12px;
+}
+.btn-dark {
+  background-color: rgb(89 52 0) !important;
+  box-shadow: 0px 0px 15px 2px #481600;
+}
+strong {
+  word-break: break-word;
+}
