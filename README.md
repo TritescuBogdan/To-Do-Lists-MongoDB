@@ -18,6 +18,7 @@ Start the local server:
 node index.js
 ```
 
+** Checked state for items is saved locally in browser (localStorage).
 
 Preview:
 ![To-Do List webpage](https://i.imgur.com/MrvKN2s.png)
